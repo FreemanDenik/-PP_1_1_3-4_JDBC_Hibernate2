@@ -12,20 +12,22 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        UserService userService = new UserServiceImpl();
+           UserService userService = new UserServiceImpl();
+           userService.createUsersTable();
 
-        userService.createUsersTable();
+           userService.saveUser("Александр", "Александрович", (byte) 25);
+           userService.saveUser("Иван", "Иванович", (byte) 15);
+           userService.saveUser("Борис", "Борисович", (byte) 35);
+           userService.saveUser("Саша", "Сашович", (byte) 14);
 
-        userService.saveUser("Александр", "Александрович", (byte) 25);
-        userService.saveUser("Иван", "Иванович", (byte) 15);
-        userService.saveUser("Борис", "Борисович", (byte) 35);
-        userService.saveUser("Саша", "Сашович", (byte) 14);
+           System.out.println("\n");
 
-        System.out.println("\n");
+           userService.getAllUsers().forEach(System.out::println);
+           userService.cleanUsersTable();
+           userService.dropUsersTable();
 
-        userService.getAllUsers().forEach(System.out::println);
-        userService.cleanUsersTable();
-        userService.dropUsersTable();
+
+
 
     }
 }

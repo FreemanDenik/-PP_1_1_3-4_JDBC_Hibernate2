@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private UserDao context;
     public UserServiceImpl() {
@@ -37,5 +37,6 @@ public class UserServiceImpl implements UserService{
     public void cleanUsersTable() throws SQLException {
         context.cleanUsersTable();
     }
+
 
 }
