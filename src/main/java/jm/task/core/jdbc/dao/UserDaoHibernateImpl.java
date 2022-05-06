@@ -49,7 +49,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            session.createSQLQuery("DROP TABLE Users").executeUpdate();
+            session.createNativeQuery("DROP TABLE Users").executeUpdate();
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
@@ -71,7 +71,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        return session.createQuery("FROM User", User.class).list();
+        return session.createNativeQuery("SELECT * FROM Users", User.class).list();
 
     }
 
@@ -80,7 +80,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            session.createQuery("DELETE FROM User").executeUpdate();
+            session.createNativeQuery("TRUNCATE TABLE Users").executeUpdate();
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
