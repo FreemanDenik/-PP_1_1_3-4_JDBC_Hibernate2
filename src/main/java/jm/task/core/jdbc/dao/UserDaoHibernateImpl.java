@@ -60,7 +60,8 @@ public class UserDaoHibernateImpl implements UserDao {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            session.createNativeQuery("TRUNCATE TABLE Users").executeUpdate();
+            session.createQuery("DELETE FROM User").executeUpdate();
+            //session.createNativeQuery("TRUNCATE TABLE Users").executeUpdate();
 
             transaction.commit();
         } catch (Exception e) {
